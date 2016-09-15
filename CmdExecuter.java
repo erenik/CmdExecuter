@@ -102,25 +102,23 @@ public class CmdExecuter implements Runnable
                  InputStreamReader(p.getErrorStream()));
 
             // read the output from the command
-            System.out.println("Here is the standard output of the command:\n");
+//            System.out.println("Here is the standard output of the command:\n");
             String s = null; 
-            while ((s = stdInput.readLine()) != null) {
-                System.out.println(s);
+            while ((s = stdInput.readLine()) != null) 
+            {
+                output += s +"\n";
+  //              System.out.println(s);
             }
             
             // read any errors from the attempted command
-            System.out.println("Here is the standard error of the command (if any):\n");
+      //      System.out.println("Here is the standard error of the command (if any):\n");
             while ((s = stdError.readLine()) != null) {
                 System.out.println(s);
+                failed = true;
             }
-            
-            System.exit(0);
         }
         catch (IOException e) {
             System.out.println(e.toString());
- //           System.out.
-//            e.printStackTrace();
-//            System.exit(-1);
         }    
     };
     /// Like pwd in Linux, fetches current directory.
