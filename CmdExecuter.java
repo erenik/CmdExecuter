@@ -80,7 +80,7 @@ public class CmdExecuter implements Runnable
         	String os = System.getProperty("os.name");
         	System.out.println("os: "+os);
         	if (os.equals("Linux"))
-        		osCmd = "xterm "+this.cmd;
+        		osCmd = "bash -c "+this.cmd;
             Process p = Runtime.getRuntime().exec(osCmd);
             
             BufferedReader stdInput = new BufferedReader(new 
@@ -89,6 +89,7 @@ public class CmdExecuter implements Runnable
             BufferedReader stdError = new BufferedReader(new 
                  InputStreamReader(p.getErrorStream()));
 
+            
             // read the output from the command
 //            System.out.println("Here is the standard output of the command:\n");
             String s = null; 
@@ -97,7 +98,7 @@ public class CmdExecuter implements Runnable
                 output += s +"\n";
                 System.out.println(s);
             }
-            
+
             // read any errors from the attempted command
       //      System.out.println("Here is the standard error of the command (if any):\n");
             while ((s = stdError.readLine()) != null) {
