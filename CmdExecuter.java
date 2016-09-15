@@ -161,5 +161,9 @@ public class CmdExecuter implements Runnable
             System.out.println(output);
         }
     }
+    
+    public String getOutput() {
+    	return output;
+    }
    
 }
