@@ -10,10 +10,13 @@ import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
+/*
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+*/
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
@@ -39,18 +42,7 @@ public class CmdExecuter implements Runnable
         initialCmd = cmd;
         cwd = workingDir();
         // Parse cmd.
-//        System.out.println("cmd: "+cmd);
-        if (cmd.contains("||"))
-        {
-            String[] pipeParts = cmd.split("||");
-            System.out.println("pipeparts: "+pipeParts.length);
-            this.cmd = pipeParts[0];
-            System.out.println("cmd: "+this.cmd);
-            if (pipeParts.length > 1)
-                this.pipeCmd = pipeParts[1];
-        }
-        else
-            this.cmd = cmd;
+        this.cmd = cmd;
     }
     /**
      * @param args the command line arguments
@@ -60,7 +52,7 @@ public class CmdExecuter implements Runnable
         System.out.println("Running unit tests of CmdExecuter.");
         /// Unit test of commands right here, yo.
         String[] unitTests = {
-            "dir",
+            "ls"
         };
         for (int i = 0; i < unitTests.length; ++i)
         {
@@ -68,16 +60,7 @@ public class CmdExecuter implements Runnable
             cmd.run();
             if (cmd.failed)
                 break;
-        }
-        
-        // Get input
-        // create a scanner so we can read the command-line input
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter cmd: ");
-        // Process
-        
-        // Do output
-        
+        }        
     }
     /** Executes the command. The command has been parsed and split up appropriately when reaching here.
      *  Only the arguments relevant to the command should be provided along with the command itself.
@@ -93,11 +76,16 @@ public class CmdExecuter implements Runnable
     {
         try {
             // using the Runtime exec method:
-            Process p = Runtime.getRuntime().exec("cmd /C "+this.cmd);
+        	String osCmd = "cmd /C "+this.cmd;
+        	String os = System.getProperty("os.name");
+        	System.out.println("os: "+os);
+        	if (os.equals("Linux"))
+        		osCmd = "xterm "+this.cmd;
+            Process p = Runtime.getRuntime().exec(osCmd);
             
             BufferedReader stdInput = new BufferedReader(new 
                  InputStreamReader(p.getInputStream()));
-
+            
             BufferedReader stdError = new BufferedReader(new 
                  InputStreamReader(p.getErrorStream()));
 
@@ -107,7 +95,7 @@ public class CmdExecuter implements Runnable
             while ((s = stdInput.readLine()) != null) 
             {
                 output += s +"\n";
-  //              System.out.println(s);
+                System.out.println(s);
             }
             
             // read any errors from the attempted command
