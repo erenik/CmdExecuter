@@ -60,20 +60,7 @@ public class CmdExecuter implements Runnable
         System.out.println("Running unit tests of CmdExecuter.");
         /// Unit test of commands right here, yo.
         String[] unitTests = {
-            "ls",
-            "cd C:/ && ls",
-            "ls -l",
-            "cd / && ls",
-            "pwd",
-            "cd",
-            "cd /home/ && pwd | ls –all ",
-            /// below have not been implemented yet.
-            "cat src/README.md",
-            "uptime", 
-            "who",
-            "ps",
-            "grep",
-            "ifconfig"
+            "dir",
         };
         for (int i = 0; i < unitTests.length; ++i)
         {
@@ -105,9 +92,8 @@ public class CmdExecuter implements Runnable
     void RunOSCmd()
     {
         try {
-	    // run the Unix "ps -ef" command
             // using the Runtime exec method:
-            Process p = Runtime.getRuntime().exec(this.cmd);
+            Process p = Runtime.getRuntime().exec("cmd /C "+this.cmd);
             
             BufferedReader stdInput = new BufferedReader(new 
                  InputStreamReader(p.getInputStream()));
