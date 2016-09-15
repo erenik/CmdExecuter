@@ -18,6 +18,7 @@ public class GUIcmd extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField command;
+	public JTextArea result;
 
 	/**
 	 * Launch the application.
@@ -50,8 +51,9 @@ public class GUIcmd extends JFrame {
 		command.setBounds(33, 39, 377, 20);
 		contentPane.add(command);
 		command.setColumns(10);
+		//command.addKeyListener(new KeyListener);
 		
-		JTextArea result = new JTextArea();
+		this.result = new JTextArea();
 		JScrollPane scroll = new JScrollPane(result);
 		scroll.setVerticalScrollBarPolicy ( ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS );
 		scroll.setBounds(50, 87, 456, 217);
