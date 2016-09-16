@@ -11,6 +11,8 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 
@@ -51,7 +53,6 @@ public class GUIcmd extends JFrame {
 		command.setBounds(33, 39, 377, 20);
 		contentPane.add(command);
 		command.setColumns(10);
-		//command.addKeyListener(new KeyListener);
 		
 		this.result = new JTextArea();
 		JScrollPane scroll = new JScrollPane(result);
@@ -71,4 +72,6 @@ public class GUIcmd extends JFrame {
 		contentPane.add(execbtn);
 		
 	}
+	
+
 }

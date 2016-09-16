@@ -76,11 +76,17 @@ public class CmdExecuter implements Runnable
     {
         try {
             // using the Runtime exec method:
-        	String osCmd = "cmd /C "+this.cmd;
+        	String[] osCmd = new String[3];
+        	osCmd[0] = "cmd ";
+        	osCmd[1] = "/C ";
+        	osCmd[2] = this.cmd;
         	String os = System.getProperty("os.name");
         	System.out.println("os: "+os);
-        	if (os.equals("Linux"))
-        		osCmd = "bash -c "+this.cmd;
+        	if (os.equals("Linux")) {
+        		osCmd[0] = "/bin/sh ";
+            	osCmd[1] = "-c ";
+        	}
+        		//osCmd = "bash -c "+this.cmd;
             Process p = Runtime.getRuntime().exec(osCmd);
             
             BufferedReader stdInput = new BufferedReader(new 
