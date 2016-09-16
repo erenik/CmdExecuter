@@ -15,6 +15,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
+import java.awt.event.KeyAdapter;
 
 public class GUIcmd extends JFrame {
 
@@ -50,6 +51,16 @@ public class GUIcmd extends JFrame {
 		contentPane.setLayout(null);
 		
 		command = new JTextField();
+		command.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+				if (arg0.getKeyCode() == KeyEvent.VK_ENTER) {
+					CmdExecuter cmd = new CmdExecuter(command.getText());
+					cmd.run();
+					result.setText(cmd.getOutput());
+				}
+			}
+		});
 		command.setBounds(33, 39, 377, 20);
 		contentPane.add(command);
 		command.setColumns(10);
