@@ -16,6 +16,7 @@ public class EmptyLoop extends Thread {
 		 } catch (Exception e) {
 			 System.out.println("Wrong argument!");
 			 System.out.println(e.getMessage());
+			 System.exit(0);
 		 }
 		 
 		// we print the number of execution we are going to do
