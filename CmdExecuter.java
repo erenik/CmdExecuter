@@ -83,8 +83,8 @@ public class CmdExecuter implements Runnable
         	String os = System.getProperty("os.name");
         	System.out.println("os: "+os);
         	if (os.equals("Linux")) {
-        		osCmd[0] = "bash ";
-            	osCmd[1] = "-c ";
+        		osCmd[0] = "bash";
+            	osCmd[1] = "-c";
         	}
         		//osCmd = "bash -c "+this.cmd;
             Process p = Runtime.getRuntime().exec(osCmd);
