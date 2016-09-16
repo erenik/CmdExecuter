@@ -1,46 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Command-executer class. Usage: CmdExecuter cmd = new CmdExecuter(osCmdLine); cmd.run();
+ * Output is saved in cmd.output as a string.
+ * Unit-tests in its own main-function.
+ * @author Emil, Valentin
  */
 
-
 import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-/*
-import java.nio.file.DirectoryStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-*/
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-/**
- *
- * @author Emil
- */
 public class CmdExecuter implements Runnable 
 {
-    String initialCmd; // Full cmd at initial loading.
     String cmd; // Command to be executed.
-    String pipeCmd; // Command to be piped next.
-    String input; // Input from previous command? if piping to file for example.
-    String output; // Std output of the command.
-    String cwd; // Current working directory.
+    String output = ""; // Std output of the command.
     boolean failed = false; // For unsupported or failures from exceptions. To halt unit- or repeated tests as needed.
     
     public CmdExecuter(String cmd)
     {
-        initialCmd = cmd;
-        cwd = workingDir();
         // Parse cmd.
         this.cmd = cmd;
     }
@@ -52,7 +28,10 @@ public class CmdExecuter implements Runnable
         System.out.println("Running unit tests of CmdExecuter.");
         /// Unit test of commands right here, yo.
         String[] unitTests = {
-            "ls"
+            "ls -l",
+            "cd .. && ls",
+            "cat GUIcmd.java | grep public",
+            "galapagos"
         };
         for (int i = 0; i < unitTests.length; ++i)
         {
@@ -68,7 +47,11 @@ public class CmdExecuter implements Runnable
     public void execute() 
     {
         cmd = cmd.trim(); // Remove whitespaces before n after as needed.
-        RunOSCmd();
+        /** Run the command in the OS. If you would wanna extend the program, you could
+         * handle other expressions here as well. 
+         * E.g. if (cmd.startsWith("ownCmd")) { doStuff; return; }
+         */
+        RunOSCmd(); 
         return;       
     }
     /// Runs the command natively in the OS. 
@@ -81,78 +64,48 @@ public class CmdExecuter implements Runnable
         	osCmd[1] = "/C ";
         	osCmd[2] = this.cmd;
         	String os = System.getProperty("os.name");
-        	System.out.println("os: "+os);
         	if (os.equals("Linux")) {
         		osCmd[0] = "bash";
             	osCmd[1] = "-c";
         	}
-        		//osCmd = "bash -c "+this.cmd;
-            Process p = Runtime.getRuntime().exec(osCmd);
-            
+        	// Run the command.
+            Process p = Runtime.getRuntime().exec(osCmd);            
+
+            /// Fetch output and errors (input to java from the process).
             BufferedReader stdInput = new BufferedReader(new 
                  InputStreamReader(p.getInputStream()));
-            
             BufferedReader stdError = new BufferedReader(new 
                  InputStreamReader(p.getErrorStream()));
-
-            
-            // read the output from the command
-//            System.out.println("Here is the standard output of the command:\n");
-            String s = null; 
+        
+            String s = ""; 
             while ((s = stdInput.readLine()) != null) 
             {
-                output += s +"\n";
-                System.out.println(s);
+            	output += s +"\n";
             }
-
-            // read any errors from the attempted command
-      //      System.out.println("Here is the standard error of the command (if any):\n");
             while ((s = stdError.readLine()) != null) {
                 System.out.println(s);
                 failed = true;
             }
+            /// Exit on error.
+            if (failed)
+            	System.exit(1);
         }
         catch (IOException e) {
             System.out.println(e.toString());
         }    
-    };
-    /// Like pwd in Linux, fetches current directory.
-    static String workingDir()
-    {
-        return System.getProperty("user.dir");
-    }
-    
-    /** Runs the CmdExecuter in its own thread, using provided command, next pipe and arguments as parsed and provided earlier in the constructor.
-        Schedules the next command to be executed in an own thread afterwards if piping.
+    }; 
+
+    /** Runs the CmdExecuter in its own thread, using provided command.
     */
     @Override
     public void run() 
     {
-        if (cmd.contains("&&"))
-        {
-            String[] newCmds = cmd.split("&&");
-            for (int i = 0; i < newCmds.length; ++i)
-            {
-                cmd = newCmds[i];
-                execute();
-            }
-        }        
-        else
-            execute();
+        execute();
         /// Did it work out fine?
-        // Any && ?
-        // Pipe it?
-        if (pipeCmd != null)
-        {
-            CmdExecuter piped = new CmdExecuter(pipeCmd);
-            piped.initialCmd = initialCmd;
-            piped.input = output;
-            piped.run();
-        }
-        else if (output != null && output.length() > 0)
+        if (output != null && output.length() > 0)
         {
             // Print to std out.
-            System.out.println("$ "+initialCmd);
+            System.out.println("$ "+cmd);
             System.out.println(output);
         }
     }
