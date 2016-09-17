@@ -19,30 +19,20 @@ public class UDPEchoServer {
 		try { 
 			while (true) 
 			{
-				/** Make a new packet each time. DatagramSocket.receive adds data like a queue into the packet,
-					making it unmanagable for multiple packets unless you actually create a new one (adjust offset didn't seem to have any effect).
-				
-					Try commenting the row out and you'll see, after a few iterations it catenates the data weirdly.
-				*/
-				dp = new DatagramPacket(new byte[BUFSIZE], BUFSIZE);
-				
 				s.receive(dp);
-				// print out client's address 
-				// we add our name
 				byte[] data = dp.getData();
-			//	System.out.println(" length: "+dp.getLength());
+				/// .setData appends to the buffer, so need to get only the exact bytes that we need.
+				// Optionally make a new packet each time.
 				String received = new String(data, 0, dp.getLength());
 				String toSend = "Emil&Valentin: "+received;
+				// print out client's address, port and incoming (assumed) String contents. 
 				System.out.print("Message from " + dp.getAddress().getHostAddress()+":"+dp.getPort()+" "+received+". ");
-				System.out.println("Echoing with name prepended.");
-				
+				System.out.println("Echoing with name prepended.");				
 				/// Make a new datagram packet to reset the buffer offset (doesn't go away otherwise, working like a queue pushing more data to be sent).
-			//	System.out.println("offset: "+dp.getOffset());
 				dp.setData(toSend.getBytes(), 0, toSend.getBytes().length);
-			//	System.out.println("offset: "+dp.getOffset());
-				// Send it right back 
+				// Send it back 
 				s.send(dp); 
-//				dp.setLength(BUFSIZE);// avoid shrinking the packet buffer <- wat, really
+		//		dp.setLength(BUFSIZE);// avoid shrinking the packet buffer <- generates IllegalArgumentException after setting data with .setData.
 				
 			} 
 		} catch (IOException e) {
