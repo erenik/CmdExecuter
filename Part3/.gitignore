@@ -6,3 +6,6 @@
 /GUIClient$2.class
 /GUIClient$3.class
 /GUIClient.class
+/MainServer.class
+/CmdExecuter.class
+/CmdExecThread.class
