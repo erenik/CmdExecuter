@@ -22,8 +22,8 @@ public class UDPEchoServer {
 				s.receive(dp);
 				byte[] data = dp.getData();
 				/// .setData appends to the buffer, so need to get only the exact bytes that we need.
-				// Optionally make a new packet each time.
-				String received = new String(data, 0, dp.getLength());
+				// Optionally make a new packet each time. 
+				String received = new String(data, 0, dp.getLength()); // Change this row to only new String(data) and you'll see the queue effect take place.
 				String toSend = "Emil&Valentin: "+received;
 				// print out client's address, port and incoming (assumed) String contents. 
 				System.out.print("Message from " + dp.getAddress().getHostAddress()+":"+dp.getPort()+" "+received+". ");

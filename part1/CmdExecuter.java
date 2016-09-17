@@ -15,6 +15,7 @@ public class CmdExecuter implements Runnable
     String cmd; // Command to be executed.
     String output = ""; // Std output of the command.
     boolean failed = false; // For unsupported or failures from exceptions. To halt unit- or repeated tests as needed.
+    boolean finished = false;
     
     public CmdExecuter(String cmd)
     {
@@ -53,6 +54,7 @@ public class CmdExecuter implements Runnable
          * E.g. if (cmd.startsWith("ownCmd")) { doStuff; return; }
          */
         RunOSCmd(); 
+        finished = true;
         return;       
     }
     /// Runs the command natively in the OS. 
@@ -114,5 +116,5 @@ public class CmdExecuter implements Runnable
     public String getOutput() {
     	return output;
     }
-   
+    public boolean hasFinished(){ return finished; }
 }

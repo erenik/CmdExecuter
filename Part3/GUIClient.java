@@ -15,11 +15,14 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.nio.charset.StandardCharsets;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
@@ -40,7 +43,7 @@ public class GUIClient extends JFrame {
 			public void run() {
 				try {
 					GUIClient frame = new GUIClient();
-					frame.setVisible(true);
+					frame.setVisible(true);					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -51,7 +54,8 @@ public class GUIClient extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public GUIClient() {
+	public GUIClient() 
+	{		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 588, 370);
 		contentPane = new JPanel();
@@ -101,11 +105,16 @@ public class GUIClient extends JFrame {
 		lblCommand.setBounds(10, 59, 116, 14);
 		contentPane.add(lblCommand);
 		
+		GUIClient.host.setText("127.0.0.1:4032");
+
 	}
 	
+	
+	
 	@SuppressWarnings("deprecation")
-	public static void ExecuteOnServer() {
-		
+	public static void ExecuteOnServer() 
+	{
+		System.out.println("ExecuteOnServer");
 		// creating a buffer
 		char[] buffer = new char[2048];
 		
@@ -121,35 +130,54 @@ public class GUIClient extends JFrame {
 		}
 		
 		// creating streams
-		OutputStream out;
-		InputStreamReader in;
-		
+		;
 		
 		try {
+			System.out.println("ExecuteOnServer: "+host+":"+port);
 			
 			// creating a socket
-			Socket s = new Socket(host,port);
-		
+			Socket sock = new Socket(host, port);
+			System.out.println("Connected");
 			// getting our streams
-			out = s.getOutputStream();
-			in = new InputStreamReader(s.getInputStream());
-			
+			PrintWriter out = new PrintWriter(sock.getOutputStream(), true);
+			InputStream in = sock.getInputStream();
+	        
 			// sending the command
-			out.write(command.getBytes());
+			System.out.println("sending command");
+			out.println(command);
 			out.flush();
 			
 			// receiving a reply
-			in.read(buffer,0,buffer.length);
+			System.out.println("waiting on response");
+			String result = "";
+			System.out.println("Ready to read.");
+			final int BUF_SIZE = 2048;
+			byte[] buff = new byte[BUF_SIZE];
+			int bytesRead = 0;
+			while (bytesRead <= 0)
+			{
+				bytesRead = in.read(buff);
+			} // Read until we get something of value.
 			
-			s.close();
+			result = new String(buff, 0, bytesRead);
+			System.out.println("Bytes read: "+result.length());
+			
+			sock.close();
 			//writing the reply in the GUI
-			GUIClient.result.setText(buffer.toString());
-			
+			GUIClient.result.setText(result);
 			// closing session and stuff
 		
-		} catch (IOException e) {
+		} catch (UnknownHostException e)
+		{
+			GUIClient.result.setText("Unable to connect to host: "+host);			
+		}
+		catch (java.net.ConnectException e)
+		{
+			GUIClient.result.setText("Connection refused");
+		}
+		catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		} 
 	}
 }
