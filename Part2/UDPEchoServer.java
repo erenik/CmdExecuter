@@ -18,12 +18,13 @@ public class UDPEchoServer {
 		int port = Integer.parseInt(args[0]);
 		DatagramSocket s = new DatagramSocket(port);
 		DatagramPacket dp = new DatagramPacket(new byte[BUFSIZE], BUFSIZE);
-		
+		System.out.println("Hosted. entering main loop");
 		try { 
-			while (true) {
+			while (true) 
+			{
 				s.receive(dp);
 				// print out client's address 
-				System.out.println("Message from " + dp.getAddress().getHostAddress());
+				System.out.println("Message from " + dp.getAddress().getHostAddress()+": "+dp.getData());
 				// we add our name
 				byte[] data = dp.getData();
 				dp.setData(("Emil&Valentin:"+(new String(data))).getBytes());

@@ -55,13 +55,14 @@ public class TCPEchoServer {
 		
 		//read/write loop 
 
-//Modify your code here so that it sends back your name in addition to the echoed symbols
-		out.write("Valentin&Emil:".getBytes());
-		while ((bytesread = in.read(buff)) != -1) {
-			out.write(buff,0,bytesread);
-			}
+		//Modify your code here so that it sends back your name in addition to the echoed symbols
+		while ((bytesread = in.read(buff)) != -1) 
+		{
+			out.write("Valentin&Emil:".getBytes());
+			out.write(buff, 0, bytesread);
+//			out.flush();
+		}
 		
-		out.flush();
 		
 		System.out.println("Client has left\n"); 
 		
