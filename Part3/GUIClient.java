@@ -6,14 +6,21 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
-import java.awt.GridLayout;
+
+import sun.misc.IOUtils;
+
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 import java.awt.event.KeyAdapter;
@@ -23,6 +30,7 @@ public class GUIClient extends JFrame {
 	private static JPanel contentPane;
 	public static JTextField command;
 	public static JTextArea result;
+	public static JTextField host;
 
 	/**
 	 * Launch the application.
@@ -61,7 +69,7 @@ public class GUIClient extends JFrame {
 				}
 			}
 		});
-		command.setBounds(33, 39, 377, 20);
+		command.setBounds(136, 56, 370, 20);
 		contentPane.add(command);
 		command.setColumns(10);
 		
@@ -77,30 +85,71 @@ public class GUIClient extends JFrame {
 				GUIClient.ExecuteOnServer();
 			}
 		});
-		execbtn.setBounds(462, 38, 89, 23);
+		execbtn.setBounds(417, 23, 89, 23);
 		contentPane.add(execbtn);
+		
+		host = new JTextField();
+		host.setBounds(136, 25, 271, 20);
+		contentPane.add(host);
+		host.setColumns(10);
+		
+		JLabel lblServer = new JLabel("Server (IP:port)");
+		lblServer.setBounds(10, 27, 116, 14);
+		contentPane.add(lblServer);
+		
+		JLabel lblCommand = new JLabel("Command");
+		lblCommand.setBounds(10, 59, 116, 14);
+		contentPane.add(lblCommand);
 		
 	}
 	
+	@SuppressWarnings("deprecation")
 	public static void ExecuteOnServer() {
+		
+		// creating a buffer
+		char[] buffer = new char[2048];
 		
 		// getting the desired command
 		String command = GUIClient.command.getText();
-		// getting the address
+		String hostport[] = GUIClient.host.getText().split(":");
+		String host = hostport[0];
+		int port;
+		if (hostport.length > 1) {
+			port = Integer.valueOf(hostport[1]);
+		} else {
+			port = 4032;
+		}
 		
-		// creating an INetAddress
+		// creating streams
+		OutputStream out;
+		InputStreamReader in;
 		
-		// connecting to the server
 		
-		// sending data
+		try {
+			
+			// creating a socket
+			Socket s = new Socket(host,port);
 		
-		// receiving a reply
+			// getting our streams
+			out = s.getOutputStream();
+			in = new InputStreamReader(s.getInputStream());
+			
+			// sending the command
+			out.write(command.getBytes());
+			out.flush();
+			
+			// receiving a reply
+			in.read(buffer,0,buffer.length);
+			
+			s.close();
+			//writing the reply in the GUI
+			GUIClient.result.setText(buffer.toString());
+			
+			// closing session and stuff
 		
-		//writing the reply in the GUI
-		GUIClient.result.setText("someresult");
-		
-		// closing session and stuff
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-	
-
 }
