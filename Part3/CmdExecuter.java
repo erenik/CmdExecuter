@@ -11,11 +11,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class CmdExecuter implements Runnable 
 {
     String cmd; // Command to be executed.
     String output = ""; // Std output of the command.
+    Logger log;
     boolean failed = false; // For unsupported or failures from exceptions. To halt unit- or repeated tests as needed.
     boolean finished = false;
     boolean printOutput = true; // Default, false for unitTests without errors.
@@ -24,6 +26,7 @@ public class CmdExecuter implements Runnable
     {
         // Parse cmd.
         this.cmd = cmd;
+		log = Logger.getLogger("log_file"); // Grab the logger.
     }
     static void DoUnitTests()
     {
@@ -83,6 +86,7 @@ public class CmdExecuter implements Runnable
     void RunOSCmd()
     {
         try {
+        	log.fine("CmdExecuter::RunOSCmd start");
             // using the Runtime exec method:
         	String[] osCmd = new String[3];
         	osCmd[0] = "cmd ";
@@ -115,7 +119,8 @@ public class CmdExecuter implements Runnable
                  InputStreamReader(p.getInputStream()));
             BufferedReader stdError = new BufferedReader(new 
                  InputStreamReader(p.getErrorStream()));
-        
+            
+            log.fine("Process started, waiting for output now"); // debug debug
             String s = ""; 
             while ((s = stdInput.readLine()) != null) 
             {
@@ -128,12 +133,15 @@ public class CmdExecuter implements Runnable
             if (failed)
             {
             	output += "Unknown command. Failed to launch process.";
+            	log.warning("Unknown command. Failed to launch process: "+this.cmd); // Unknown command, warn the server admins!
             	failed = true;
             }
         }
         catch (IOException e) {
             System.out.println(e.toString());
+            log.severe(e.toString()); // Severe on exceptions!
         }    
+    	log.fine("CmdExecuter::RunOSCmd end");
     }; 
 
     /** Runs the CmdExecuter in its own thread, using provided command.
@@ -146,6 +154,7 @@ public class CmdExecuter implements Runnable
         if (output != null && output.length() > 0 && printOutput)
         {
             // Print to std out.
+        	log.fine("CmdExecuter::run result: \n$ "+cmd+"\n"+output);
             System.out.println("$ "+cmd);
             System.out.println(output);
         }
