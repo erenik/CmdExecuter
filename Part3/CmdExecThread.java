@@ -8,8 +8,6 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.SocketException;
 
-import part1.CmdExecuter;
-
 public class CmdExecThread extends Thread {
 	
 	private Socket sock;
