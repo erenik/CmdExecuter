@@ -3,8 +3,9 @@ package Part4;
 import java.io.*;
 import java.net.*;
 
-public class MessageServerDispatcher extends Thread {
-
+/// Threaded thing that replies to messages from the clients.
+public class MessageServerDispatcher extends Thread 
+{
 	MessageServer callServer;
 	Socket socket;
 	InputStreamReader in;
@@ -13,19 +14,23 @@ public class MessageServerDispatcher extends Thread {
 	public static final boolean logging = true;
 
 	public MessageServerDispatcher(MessageServer ms, Socket s)
-			throws IOException {
+			throws IOException 
+	{
 		callServer = ms;
 		socket = s;
 		in = new InputStreamReader(socket.getInputStream());
 		out = new OutputStreamWriter(socket.getOutputStream());
 	}
 
-	public void log(String s) {
+	public void log(String s) 
+	{
 		if (!logging) return;
 		System.err.println("MessageServerDispatcher: " + s);
 	}
 
-	public void run() {
+	/// Thread start.
+	public void run() 
+	{
 		log("Beginning of dispatch run() method.");
 		try {
 			while (true) {

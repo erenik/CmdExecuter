@@ -3,7 +3,9 @@ package Part4;
 import java.util.*;
 import java.io.*;
 
-public class Message {
+/// Message class for the SMA
+public class Message 
+{
 	private static final int T_ANY = 0;
 	private static final int T_INTEGER = 1;
 	private static final int T_REAL = 2;
@@ -18,6 +20,7 @@ public class Message {
 	private char[] rep;
 	private int repIndex = 0;
 	private StringBuffer sb = new StringBuffer();
+	
 	public Message(char[] packedRep) {
 		rep = packedRep;
 		unpack();
@@ -25,8 +28,9 @@ public class Message {
 	
 	public Message() {
 	}
-	
-	public static Message getMessage(Reader in) throws IOException {
+	/// Read packet from socket/reader
+	public static Message getMessage(Reader in) throws IOException 
+	{
 		int messageLength = (int) in.read();
 		if (messageLength < 0)
 			throw new IOException();
@@ -36,46 +40,48 @@ public class Message {
 				throw new IOException();
 			return new Message(buf);
 	}
-
+	// Write
 	public void putMessage(Writer out) throws IOException {
 		pack();
 		out.write(rep.length);
 		out.write(rep);
 		out.flush();
 	}
-
+	// Add some parameters to the hashtable to be sent.
 	public void setParam(String key, String value) {
 		parameters.put(key,value);
 	}
-	
+	/// Sets the type, when clients sends it the service may or may not respond depending on if the type is subscripted to.
 	public void setType(int value) {
 		//TODO
 		type=value;
 	}
+	
+	/// Just getters.
 	public int getType() {
 		return type;
-		//TODO
+		//TODO Oh my. Crash the system! After return!
+//		System.exit(1);
 	}
-	
 	public String getParam(String key) {
 		return (String) parameters.get(key);
 	}
-	
 	public char[] getCharArray() {
 		pack();
 		return rep;
 	}
 
+	// Adds integer to the reply char array.
 	private void putInt(int value) {
 		if (repIndex < rep.length)
 			rep[repIndex++] = (char) value;
 	}
-	
+	/// Put/write functions for the reply.
 	private void putParameter(String k, String v) {
 		putString(k);
 		putString(v);
 	}
-	
+	/// Put/write functions for the reply.
 	private void putString(String s) {
 		putInt(s.length());
 		putInt(T_STRING);
@@ -83,14 +89,14 @@ public class Message {
 		for (int i=0; i < convertedText.length; i++)
 			rep[repIndex++] = convertedText[i];
 	}
-	
+	// Gets the next int in the reply. Returns -1 if at the end of the reply.
 	private int getInt() {
 		if (repIndex < rep.length)
 			return (int) rep[repIndex++];
 		else
 			return -1;
 	}
-	
+	// Packet getter for String types.
 	private String getString() {
 		int paramLength = getInt();
 		int paramType = getInt();
@@ -102,7 +108,7 @@ public class Message {
 		
 		return sb.toString();
 	}
-
+	/// Calculate size of the packet to reply based on given parameters.
 	private int computeStorageSize() {
 		int totalSize = HEADER_SIZE;
 		Enumeration e = parameters.keys();
@@ -116,6 +122,7 @@ public class Message {
 		return totalSize;
 	}
 	
+	/// Build the packet?
 	public void pack() {
 		int totalStorage = computeStorageSize();
 		rep = new char[totalStorage];
@@ -131,7 +138,7 @@ public class Message {
 			putParameter(key,value);
 		}
 	}
-
+	/// Unpack received packet - decode params
 	public void unpack() {
 		/* need to clear out the hashtable first */
 		parameters.clear();
@@ -145,13 +152,14 @@ public class Message {
 			parameters.put(key,value);
 		}
 	}
-
+	/// For debug
 	public String toString() {
 		return "Message: type = "+ type + " param = " + parameters;
 	}
 	
-
-	public static void main(String args[]) {
+	// A unit-test.
+	public static void main(String args[]) 
+	{
 		Message m = new Message();
 		m.setParam("v0","1.5");
 		m.setParam("v1","2.0");

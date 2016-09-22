@@ -3,7 +3,9 @@ package Part4;
 import java.io.*;
 import java.net.*;
 
-public class MessageClient extends Thread {
+/// Represents a client. Takes a host and port, tries to connect and fetches input/output streams to easily communicate with it.
+public class MessageClient extends Thread 
+{
 
 	Socket socket;
 	OutputStreamWriter out;
@@ -16,6 +18,7 @@ public class MessageClient extends Thread {
 		in = new InputStreamReader(socket.getInputStream());
 	}
 
+	// Tries to send a message and get the reply.
 	public Message call(Message message) {
 		try {
 			message.putMessage(out);
@@ -32,7 +35,7 @@ public class MessageClient extends Thread {
 			return new Message();
 		}
 	}
-
+	// Disconnects, first sends a message informing of the disconnect to the server.
 	public void disconnect() {
 		Message m = new Message();
 		m.setType(0);

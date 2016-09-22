@@ -4,9 +4,10 @@ import java.net.*;
 import java.io.*;
 import java.util.*;
 
+// A message server..
 public class MessageServer extends Thread {
 	private ServerSocket callListener;
-	private Hashtable subscribers;
+	private Hashtable subscribers; // Message service subscription
 	public static final boolean logging = true;
 	
 	public void log(String s) {
@@ -22,7 +23,8 @@ public class MessageServer extends Thread {
 		log("Created MessageServer instance fully!");
 	}
 
-	public void subscribe(int messageType, Deliverable d) {
+	public void subscribe(int messageType, Deliverable d) 
+	{
 		subscribers.put(messageType + "", d);
 	}
 
@@ -30,13 +32,14 @@ public class MessageServer extends Thread {
 		return (Deliverable) subscribers.get(messageType + "");
 	}
 
+	// Thread start!
 	public void run() {
 		log("MessageServer thread started. run() dispatched.");
 		while (true) {
 			try {
 				Socket s=callListener.accept();
 				MessageServerDispatcher csd;
-				csd = new MessageServerDispatcher(this, s);
+				csd = new MessageServerDispatcher(this, s); // For each client, add a MessageServerDispatcher to reply to it?
 				csd.setDaemon(false);
 				csd.start();
 			} catch(Exception e) {
