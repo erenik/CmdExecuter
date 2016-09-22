@@ -30,8 +30,8 @@ public class WeatherClient {
 		
 		// Test the locations.
 		List<String> locations = new ArrayList<String>();
-		locations.add("Luleå");
-		locations.add("Skellefteå");
+		locations.add("Lulea");
+		locations.add("Skelleftea");
 		locations.add("Nancy");
 		m.setType(WeatherService.TEMP_MESSAGE);
 		for (int i = 0; i < locations.size(); ++i)

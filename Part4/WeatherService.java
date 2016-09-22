@@ -16,9 +16,9 @@ public class WeatherService implements Deliverable
 		{
 			int temp = -30;
 			String loc = m.getParam("location");
-			if (loc.equals("Luleå"))
+			if (loc.equals("Lulea"))
 				temp = -25;
-			else if (loc.contains("Skellefteå"))
+			else if (loc.contains("Skelleftea"))
 				temp = -20;
 			else if (loc.contains("Nancy"))
 				temp = 20;
