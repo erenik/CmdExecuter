@@ -1,4 +1,4 @@
-package se.ltu.netprog.security.jsse;
+package Part5;
 /*
  * Copyright 2006 Sun Microsystems, Inc.  All Rights Reserved.
  *

@@ -2,7 +2,7 @@
 // LoginClient uses an SSLSocket to transmit fake login 
 // information to LoginServer. 
 
-package se.ltu.netprog.security.jsse;
+package Part5;
 
 // Java core packages
 import java.io.*;

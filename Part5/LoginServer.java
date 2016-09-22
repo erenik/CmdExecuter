@@ -2,7 +2,7 @@
 // LoginServer uses an SSLServerSocket to demonstrate JSSE's 
 // SSL implementation. 
 
-package se.ltu.netprog.security.jsse;
+package Part5;
 
 // Java core packages
 import java.io.*; // Java extension packages
