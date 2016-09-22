@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2016-09-21T20:21:20</date>
+  <millis>1474482080375</millis>
+  <sequence>0</sequence>
+  <logger>log_file</logger>
+  <level>INFO</level>
+  <class>Part3.MainServer</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Opening server at port: 4032</message>
+</record>
+<record>
+  <date>2016-09-21T20:22:50</date>
+  <millis>1474482170414</millis>
+  <sequence>1</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Part3.CmdExecThread</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>CmdExecThread::run start</message>
+</record>
+<record>
+  <date>2016-09-21T20:22:50</date>
+  <millis>1474482170414</millis>
+  <sequence>2</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Part3.CmdExecThread</class>
+  <method>Read</method>
+  <thread>1</thread>
+  <message>CmdExecThread::Read start</message>
+</record>
+<record>
+  <date>2016-09-21T20:22:50</date>
+  <millis>1474482170414</millis>
+  <sequence>3</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Part3.CmdExecuter</class>
+  <method>RunOSCmd</method>
+  <thread>1</thread>
+  <message>CmdExecuter::RunOSCmd start</message>
+</record>
+<record>
+  <date>2016-09-21T20:22:50</date>
+  <millis>1474482170419</millis>
+  <sequence>4</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Part3.CmdExecuter</class>
+  <method>RunOSCmd</method>
+  <thread>1</thread>
+  <message>Process started, waiting for output now</message>
+</record>
+<record>
+  <date>2016-09-21T20:22:53</date>
+  <millis>1474482173476</millis>
+  <sequence>5</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Part3.CmdExecuter</class>
+  <method>RunOSCmd</method>
+  <thread>1</thread>
+  <message>CmdExecuter::RunOSCmd end</message>
+</record>
+<record>
+  <date>2016-09-21T20:22:53</date>
+  <millis>1474482173477</millis>
+  <sequence>6</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Part3.CmdExecuter</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>CmdExecuter::run result: 
+$ ping 8.8.8.8
+
+Envoi d'une requˆte 'Ping'  8.8.8.8 avec 32 octets de donn‚esÿ:
+R‚ponse de 8.8.8.8ÿ: octets=32 temps=16 ms TTL=55
+R‚ponse de 8.8.8.8ÿ: octets=32 temps=16 ms TTL=55
+R‚ponse de 8.8.8.8ÿ: octets=32 temps=16 ms TTL=55
+R‚ponse de 8.8.8.8ÿ: octets=32 temps=16 ms TTL=55
+
+Statistiques Ping pour 8.8.8.8:
+    Paquetsÿ: envoy‚s = 4, re‡us = 4, perdus = 0 (perte 0%),
+Dur‚e approximative des boucles en millisecondes :
+    Minimum = 16ms, Maximum = 16ms, Moyenne = 16ms
+</message>
+</record>
+<record>
+  <date>2016-09-21T20:22:53</date>
+  <millis>1474482173480</millis>
+  <sequence>7</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Part3.CmdExecThread</class>
+  <method>Read</method>
+  <thread>1</thread>
+  <message>CmdExecThread::Read end</message>
+</record>
+<record>
+  <date>2016-09-21T20:22:53</date>
+  <millis>1474482173481</millis>
+  <sequence>8</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Part3.CmdExecThread</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>CmdExecThread::run end</message>
+</record>
+<record>
+  <date>2016-09-21T20:23:05</date>
+  <millis>1474482185607</millis>
+  <sequence>9</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Part3.CmdExecThread</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>CmdExecThread::run start</message>
+</record>
+<record>
+  <date>2016-09-21T20:23:05</date>
+  <millis>1474482185607</millis>
+  <sequence>10</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Part3.CmdExecThread</class>
+  <method>Read</method>
+  <thread>1</thread>
+  <message>CmdExecThread::Read start</message>
+</record>
+<record>
+  <date>2016-09-21T20:23:05</date>
+  <millis>1474482185607</millis>
+  <sequence>11</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Part3.CmdExecuter</class>
+  <method>RunOSCmd</method>
+  <thread>1</thread>
+  <message>CmdExecuter::RunOSCmd start</message>
+</record>
+<record>
+  <date>2016-09-21T20:23:05</date>
+  <millis>1474482185611</millis>
+  <sequence>12</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Part3.CmdExecuter</class>
+  <method>RunOSCmd</method>
+  <thread>1</thread>
+  <message>Process started, waiting for output now</message>
+</record>
+<record>
+  <date>2016-09-21T20:23:05</date>
+  <millis>1474482185629</millis>
+  <sequence>13</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Part3.CmdExecuter</class>
+  <method>RunOSCmd</method>
+  <thread>1</thread>
+  <message>CmdExecuter::RunOSCmd end</message>
+</record>
+<record>
+  <date>2016-09-21T20:23:05</date>
+  <millis>1474482185629</millis>
+  <sequence>14</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Part3.CmdExecuter</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>CmdExecuter::run result: 
+$ dir
+ Le volume dans le lecteur D s'appelle Data
+ Le num‚ro de s‚rie du volume est 18E0-F120
+
+ R‚pertoire de D:\prog\CmdExecuter
+
+21/09/2016  20:21    &lt;DIR&gt;          .
+21/09/2016  20:21    &lt;DIR&gt;          ..
+15/09/2016  13:23               226 .classpath
+16/09/2016  10:29               128 .gitignore
+15/09/2016  13:23               386 .project
+21/09/2016  20:13             2ÿ889 CmdExecuter.class
+17/09/2016  13:39             3ÿ730 CmdExecuter.java
+21/09/2016  20:13             1ÿ305 EmptyLoop.class
+16/09/2016  10:40               782 EmptyLoop.java
+21/09/2016  20:13               677 GUIcmd$1.class
+21/09/2016  20:13             1ÿ021 GUIcmd$2.class
+21/09/2016  20:13               963 GUIcmd$3.class
+21/09/2016  20:13             2ÿ014 GUIcmd.class
+16/09/2016  10:24             2ÿ316 GUIcmd.java
+21/09/2016  20:13    &lt;DIR&gt;          part1
+21/09/2016  20:13    &lt;DIR&gt;          Part2
+21/09/2016  20:14    &lt;DIR&gt;          Part3
+15/09/2016  13:20                32 README.md
+21/09/2016  20:21                 0 serv.log
+21/09/2016  20:21                 0 serv.log.lck
+              15 fichier(s)           16ÿ469 octets
+               5 R‚p(s)  441ÿ542ÿ909ÿ952 octets libres
+</message>
+</record>
+<record>
+  <date>2016-09-21T20:23:05</date>
+  <millis>1474482185630</millis>
+  <sequence>15</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Part3.CmdExecThread</class>
+  <method>Read</method>
+  <thread>1</thread>
+  <message>CmdExecThread::Read end</message>
+</record>
+<record>
+  <date>2016-09-21T20:23:05</date>
+  <millis>1474482185630</millis>
+  <sequence>16</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Part3.CmdExecThread</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>CmdExecThread::run end</message>
+</record>
+<record>
+  <date>2016-09-21T20:23:11</date>
+  <millis>1474482191086</millis>
+  <sequence>17</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Part3.CmdExecThread</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>CmdExecThread::run start</message>
+</record>
+<record>
+  <date>2016-09-21T20:23:11</date>
+  <millis>1474482191086</millis>
+  <sequence>18</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Part3.CmdExecThread</class>
+  <method>Read</method>
+  <thread>1</thread>
+  <message>CmdExecThread::Read start</message>
+</record>
+<record>
+  <date>2016-09-21T20:23:11</date>
+  <millis>1474482191086</millis>
+  <sequence>19</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Part3.CmdExecuter</class>
+  <method>RunOSCmd</method>
+  <thread>1</thread>
+  <message>CmdExecuter::RunOSCmd start</message>
+</record>
+<record>
+  <date>2016-09-21T20:23:11</date>
+  <millis>1474482191091</millis>
+  <sequence>20</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Part3.CmdExecuter</class>
+  <method>RunOSCmd</method>
+  <thread>1</thread>
+  <message>Process started, waiting for output now</message>
+</record>
+<record>
+  <date>2016-09-21T20:23:14</date>
+  <millis>1474482194145</millis>
+  <sequence>21</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Part3.CmdExecuter</class>
+  <method>RunOSCmd</method>
+  <thread>1</thread>
+  <message>CmdExecuter::RunOSCmd end</message>
+</record>
+<record>
+  <date>2016-09-21T20:23:14</date>
+  <millis>1474482194146</millis>
+  <sequence>22</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Part3.CmdExecuter</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>CmdExecuter::run result: 
+$ ping 8.8.8.8
+
+Envoi d'une requˆte 'Ping'  8.8.8.8 avec 32 octets de donn‚esÿ:
+R‚ponse de 8.8.8.8ÿ: octets=32 temps=18 ms TTL=55
+R‚ponse de 8.8.8.8ÿ: octets=32 temps=16 ms TTL=55
+R‚ponse de 8.8.8.8ÿ: octets=32 temps=16 ms TTL=55
+R‚ponse de 8.8.8.8ÿ: octets=32 temps=16 ms TTL=55
+
+Statistiques Ping pour 8.8.8.8:
+    Paquetsÿ: envoy‚s = 4, re‡us = 4, perdus = 0 (perte 0%),
+Dur‚e approximative des boucles en millisecondes :
+    Minimum = 16ms, Maximum = 18ms, Moyenne = 16ms
+</message>
+</record>
+<record>
+  <date>2016-09-21T20:23:14</date>
+  <millis>1474482194148</millis>
+  <sequence>23</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Part3.CmdExecThread</class>
+  <method>Read</method>
+  <thread>1</thread>
+  <message>CmdExecThread::Read end</message>
+</record>
+<record>
+  <date>2016-09-21T20:23:14</date>
+  <millis>1474482194148</millis>
+  <sequence>24</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Part3.CmdExecThread</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>CmdExecThread::run end</message>
+</record>
