@@ -14,7 +14,7 @@ import javax.net.ssl.*;
 public class LoginClient {
 	
 	// LoginClient constructor
-	public LoginClient() {
+	public LoginClient(String ip) {
 		// open SSLSocket connection to server and send login
 		try {
 			
@@ -22,10 +22,12 @@ public class LoginClient {
 			SSLSocketFactory socketFactory = 
 				( SSLSocketFactory ) SSLSocketFactory.getDefault();
 			
+			if (ip.length() < 1)
+				ip = "54.70.189.3";
 			// create SSLSocket from factory
 			SSLSocket socket = 
 				( SSLSocket ) socketFactory.createSocket(
-						"comnet.sm.ltu.se", 7070 );
+						ip, 7070 );
 			
 			// create PrintWriter for sending login to server
 			
@@ -82,7 +84,9 @@ public class LoginClient {
 	// execute application
 	public static void main( String args[] ) 
 	{
-		new LoginClient();
+		String ip = args[0];
+		System.out.println("ip: "+ip);
+		new LoginClient(ip);
 		
 	}
 	
