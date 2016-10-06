@@ -39,8 +39,11 @@ package Part5;
 
 import javax.net.ssl.*;
 import java.io.*;
+import java.security.KeyManagementException;
 import java.security.KeyStore;
+import java.security.KeyStoreException;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 
@@ -50,32 +53,20 @@ import java.security.cert.X509Certificate;
  */
 public class InstallCert {
 
-    public static void main(String[] args) throws Exception {
-        String host;
-        int port;
-        char[] passphrase;
-        if ((args.length == 1) || (args.length == 2)) {
-            String[] c = args[0].split(":");
-            host = c[0];
-            port = (c.length == 1) ? 443 : Integer.parseInt(c[1]);
-            String p = (args.length == 1) ? "changeit" : args[1];
-            passphrase = p.toCharArray();
-        } else {
-            System.out.println("Usage: java InstallCert <host>[:port] [passphrase]");
-            return;
-        }
-
-        File file = new File("jssecacerts");
-        if (file.isFile() == false) {
-            char SEP = File.separatorChar;
-            File dir = new File(System.getProperty("java.home") + SEP
-                    + "lib" + SEP + "security");
-            file = new File(dir, "jssecacerts");
-            if (file.isFile() == false) {
-                file = new File(dir, "cacerts");
-            }
-        }
-        System.out.println("Loading KeyStore " + file + "...");
+	public static void InstallCert(String host, int port, String passphr) throws KeyStoreException, NoSuchAlgorithmException, CertificateException, IOException, KeyManagementException
+	{
+		char[] passphrase = passphr.toCharArray();
+		 File file = new File("jssecacerts");
+	        if (file.isFile() == false) {
+	            char SEP = File.separatorChar;
+	            File dir = new File(System.getProperty("java.home") + SEP
+	                    + "lib" + SEP + "security");
+	            file = new File(dir, "jssecacerts");
+	            if (file.isFile() == false) {
+	                file = new File(dir, "cacerts");
+	            }
+	        }
+		System.out.println("Loading KeyStore " + file + "...");
         InputStream in = new FileInputStream(file);
         KeyStore ks = KeyStore.getInstance(KeyStore.getDefaultType());
         ks.load(in, passphrase);
@@ -92,7 +83,8 @@ public class InstallCert {
 
         System.out.println("Opening connection to " + host + ":" + port + "...");
         SSLSocket socket = (SSLSocket) factory.createSocket(host, port);
-        socket.setSoTimeout(10000);
+        System.out.println("Connected");
+        socket.setSoTimeout(500);
         try {
             System.out.println("Starting SSL handshake...");
             socket.startHandshake();
@@ -100,8 +92,8 @@ public class InstallCert {
             System.out.println();
             System.out.println("No errors, certificate is already trusted");
         } catch (SSLException e) {
-            System.out.println();
-            e.printStackTrace(System.out);
+            System.out.println("Exception: "+e.getMessage());
+//            e.printStackTrace(System.out);
         }
 
         X509Certificate[] chain = tm.chain;
@@ -154,6 +146,30 @@ public class InstallCert {
         System.out.println
                 ("Added certificate to keystore 'jssecacerts' using alias '"
                         + alias + "'");
+		
+	}
+	
+    public static void main(String[] args) throws Exception 
+    {
+        String host;
+        int port;
+        String passphrase;
+        if ((args.length == 1) || (args.length == 2)) {
+            String[] c = args[0].split(":");
+            host = c[0];
+            port = (c.length == 1) ? 443 : Integer.parseInt(c[1]);
+            String p = (args.length == 1) ? "changeit" : args[1];
+            passphrase = p;
+        } else {
+            System.out.println("Usage: java InstallCert <host>[:port] [passphrase]");
+            return;
+        }
+        try {
+        	InstallCert(host, port, passphrase);
+        } catch (Exception e)
+        {
+        	System.out.println("Exception: "+e.toString());
+        }
     }
 
     private static final char[] HEXDIGITS = "0123456789abcdef".toCharArray();

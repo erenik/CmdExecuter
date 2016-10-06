@@ -159,33 +159,7 @@ public class EncipherDecipher extends JFrame
 			// initialize cipher in encrypt mode
 			cipher.init( Cipher.ENCRYPT_MODE, secretKey, parameterSpec );
 		}
-		
-		//handle NoSuchAlgorithmException
-		catch ( NoSuchAlgorithmException exception ) { 
-			exception.printStackTrace(); 
-			System.exit( 1 );
-		}
-	
-		//handle InvalidKeySpecException
-		catch ( InvalidKeySpecException exception ) { 
-			exception.printStackTrace(); 
-			System.exit( 1 );
-		}
-	
-		//handle InvalidKeyException
-		catch ( InvalidKeyException exception ) { 
-			exception.printStackTrace(); 
-			System.exit( 1 );
-		}
-	
-		//handle NoSuchPaddingException
-		catch ( NoSuchPaddingException exception ) { 
-			exception.printStackTrace(); 
-			System.exit( 1 );
-		}
-	
-		//handle InvalidAlgorithmParameterException
-		catch ( InvalidAlgorithmParameterException exception ) { 
+		catch ( Exception exception ) { 
 			exception.printStackTrace(); 
 			System.exit( 1 );
 		}

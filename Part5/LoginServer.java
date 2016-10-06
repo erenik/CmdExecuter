@@ -16,15 +16,19 @@ public class LoginServer {
 	private SSLServerSocket serverSocket;
 	
 	// LoginServer constructor
-	public LoginServer() throws Exception 
+	public LoginServer()  
 	{
 		// SSLServerSocketFactory for building SSLServerSockets
 		SSLServerSocketFactory socketFactory = ( SSLServerSocketFactory )
 		SSLServerSocketFactory.getDefault();
 		
 		// create SSLServerSocket on specified port
-		serverSocket = ( SSLServerSocket ) socketFactory.createServerSocket( 7070 );
-		
+		try {
+			serverSocket = ( SSLServerSocket ) socketFactory.createServerSocket( 7070 );
+		} catch (Exception e)
+		{
+			System.out.println("Unable to host server on port 7070: "+e.toString());
+		}
 	} // end LoginServer constructor
 	
 	// start server and listen for clients
@@ -33,10 +37,8 @@ public class LoginServer {
 	{
 		// perpetually listen for clients
 		while (true) {
-			
 			// wait for client connection and check login information
 			try { 
-				
 				System.err.println( "Waiting for connection..." );
 				
 				// create new SSLSocket for client
@@ -47,36 +49,31 @@ public class LoginServer {
 						new InputStreamReader( 
 								socket.getInputStream() ) );
 				
-				
 				//open PrintWriter for writing data to client
 				PrintWriter output = new PrintWriter( 
 						new OutputStreamWriter(
-								socket.getOutputStream() ) );
-				
+								socket.getOutputStream() ) 
+				);
 				String userName = input.readLine(); 
 				String password = input.readLine();
-				
 				if ( userName.equals( CORRECT_USER_NAME ) && 
-						password.equals( CORRECT_PASSWORD ) ) {
-					
+						password.equals( CORRECT_PASSWORD ) ) 
+				{
 					output.println( "Welcome, " + userName );
 				}
-				else {
-					
+				else {					
 					output.println( "Login Failed." );
 				}
-				
 				// clean up streams and SSLSocket
 				output.close(); 
 				input.close(); 
 				socket.close();
-				
 			} // end try
 			
 			// handle exception communicating with client
-			catch ( IOException ioException ) { 
-				ioException.printStackTrace();
-				
+			catch ( IOException ioException ) 
+			{ 
+				System.out.println("IOException with client, assumed disconnected: "+ioException.toString());				
 			} 
 			
 		} // end while
