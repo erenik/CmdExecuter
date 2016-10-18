@@ -98,7 +98,7 @@ public class HeavyComputing implements Runnable  {
 		log.fine("CmdExecThread::run start"); // Debug when a function starts/stops
 		// Set blocking time-out. Ignore after more than 500ms. Reset the connection.
 		try {
-			client.setSoTimeout(500);
+			//client.setSoTimeout(50000);
 		} catch (SocketException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
