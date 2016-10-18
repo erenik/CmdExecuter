@@ -2,8 +2,8 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2016-10-18T10:39:21</date>
-  <millis>1476787161935</millis>
+  <date>2016-10-18T11:24:24</date>
+  <millis>1476789864851</millis>
   <sequence>0</sequence>
   <logger>log_file</logger>
   <level>INFO</level>
@@ -11,5 +11,357 @@
   <method>main</method>
   <thread>1</thread>
   <message>Opening server at port: 4032</message>
+</record>
+<record>
+  <date>2016-10-18T11:24:28</date>
+  <millis>1476789868485</millis>
+  <sequence>1</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Lab4.HeavyComputing</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>CmdExecThread::run start</message>
+</record>
+<record>
+  <date>2016-10-18T11:24:28</date>
+  <millis>1476789868485</millis>
+  <sequence>2</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Lab4.HeavyComputing</class>
+  <method>Read</method>
+  <thread>1</thread>
+  <message>HeavyComputation::Read start</message>
+</record>
+<record>
+  <date>2016-10-18T11:24:29</date>
+  <millis>1476789869719</millis>
+  <sequence>3</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Lab4.HeavyComputing</class>
+  <method>Read</method>
+  <thread>1</thread>
+  <message>HC::Read end</message>
+</record>
+<record>
+  <date>2016-10-18T11:24:29</date>
+  <millis>1476789869719</millis>
+  <sequence>4</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Lab4.HeavyComputing</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>CmdExecThread::run end</message>
+</record>
+<record>
+  <date>2016-10-18T11:24:33</date>
+  <millis>1476789873983</millis>
+  <sequence>5</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Lab4.HeavyComputing</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>CmdExecThread::run start</message>
+</record>
+<record>
+  <date>2016-10-18T11:24:33</date>
+  <millis>1476789873983</millis>
+  <sequence>6</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Lab4.HeavyComputing</class>
+  <method>Read</method>
+  <thread>1</thread>
+  <message>HeavyComputation::Read start</message>
+</record>
+<record>
+  <date>2016-10-18T11:24:35</date>
+  <millis>1476789875766</millis>
+  <sequence>7</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Lab4.HeavyComputing</class>
+  <method>Read</method>
+  <thread>1</thread>
+  <message>HC::Read end</message>
+</record>
+<record>
+  <date>2016-10-18T11:24:35</date>
+  <millis>1476789875767</millis>
+  <sequence>8</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Lab4.HeavyComputing</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>CmdExecThread::run end</message>
+</record>
+<record>
+  <date>2016-10-18T11:24:41</date>
+  <millis>1476789881264</millis>
+  <sequence>9</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Lab4.HeavyComputing</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>CmdExecThread::run start</message>
+</record>
+<record>
+  <date>2016-10-18T11:24:41</date>
+  <millis>1476789881264</millis>
+  <sequence>10</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Lab4.HeavyComputing</class>
+  <method>Read</method>
+  <thread>1</thread>
+  <message>HeavyComputation::Read start</message>
+</record>
+<record>
+  <date>2016-10-18T11:24:43</date>
+  <millis>1476789883661</millis>
+  <sequence>11</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Lab4.HeavyComputing</class>
+  <method>Read</method>
+  <thread>1</thread>
+  <message>HC::Read end</message>
+</record>
+<record>
+  <date>2016-10-18T11:24:43</date>
+  <millis>1476789883661</millis>
+  <sequence>12</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Lab4.HeavyComputing</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>CmdExecThread::run end</message>
+</record>
+<record>
+  <date>2016-10-18T11:24:48</date>
+  <millis>1476789888785</millis>
+  <sequence>13</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Lab4.HeavyComputing</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>CmdExecThread::run start</message>
+</record>
+<record>
+  <date>2016-10-18T11:24:48</date>
+  <millis>1476789888785</millis>
+  <sequence>14</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Lab4.HeavyComputing</class>
+  <method>Read</method>
+  <thread>1</thread>
+  <message>HeavyComputation::Read start</message>
+</record>
+<record>
+  <date>2016-10-18T11:24:52</date>
+  <millis>1476789892362</millis>
+  <sequence>15</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Lab4.HeavyComputing</class>
+  <method>Read</method>
+  <thread>1</thread>
+  <message>HC::Read end</message>
+</record>
+<record>
+  <date>2016-10-18T11:24:52</date>
+  <millis>1476789892363</millis>
+  <sequence>16</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Lab4.HeavyComputing</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>CmdExecThread::run end</message>
+</record>
+<record>
+  <date>2016-10-18T11:25:01</date>
+  <millis>1476789901143</millis>
+  <sequence>17</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Lab4.HeavyComputing</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>CmdExecThread::run start</message>
+</record>
+<record>
+  <date>2016-10-18T11:25:01</date>
+  <millis>1476789901145</millis>
+  <sequence>18</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Lab4.HeavyComputing</class>
+  <method>Read</method>
+  <thread>1</thread>
+  <message>HeavyComputation::Read start</message>
+</record>
+<record>
+  <date>2016-10-18T11:25:06</date>
+  <millis>1476789906601</millis>
+  <sequence>19</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Lab4.HeavyComputing</class>
+  <method>Read</method>
+  <thread>1</thread>
+  <message>HC::Read end</message>
+</record>
+<record>
+  <date>2016-10-18T11:25:06</date>
+  <millis>1476789906602</millis>
+  <sequence>20</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Lab4.HeavyComputing</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>CmdExecThread::run end</message>
+</record>
+<record>
+  <date>2016-10-18T11:25:15</date>
+  <millis>1476789915456</millis>
+  <sequence>21</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Lab4.HeavyComputing</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>CmdExecThread::run start</message>
+</record>
+<record>
+  <date>2016-10-18T11:25:15</date>
+  <millis>1476789915456</millis>
+  <sequence>22</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Lab4.HeavyComputing</class>
+  <method>Read</method>
+  <thread>1</thread>
+  <message>HeavyComputation::Read start</message>
+</record>
+<record>
+  <date>2016-10-18T11:25:24</date>
+  <millis>1476789924034</millis>
+  <sequence>23</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Lab4.HeavyComputing</class>
+  <method>Read</method>
+  <thread>1</thread>
+  <message>HC::Read end</message>
+</record>
+<record>
+  <date>2016-10-18T11:25:24</date>
+  <millis>1476789924034</millis>
+  <sequence>24</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Lab4.HeavyComputing</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>CmdExecThread::run end</message>
+</record>
+<record>
+  <date>2016-10-18T11:25:29</date>
+  <millis>1476789929397</millis>
+  <sequence>25</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Lab4.HeavyComputing</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>CmdExecThread::run start</message>
+</record>
+<record>
+  <date>2016-10-18T11:25:29</date>
+  <millis>1476789929398</millis>
+  <sequence>26</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Lab4.HeavyComputing</class>
+  <method>Read</method>
+  <thread>1</thread>
+  <message>HeavyComputation::Read start</message>
+</record>
+<record>
+  <date>2016-10-18T11:25:42</date>
+  <millis>1476789942841</millis>
+  <sequence>27</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Lab4.HeavyComputing</class>
+  <method>Read</method>
+  <thread>1</thread>
+  <message>HC::Read end</message>
+</record>
+<record>
+  <date>2016-10-18T11:25:42</date>
+  <millis>1476789942842</millis>
+  <sequence>28</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Lab4.HeavyComputing</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>CmdExecThread::run end</message>
+</record>
+<record>
+  <date>2016-10-18T11:26:00</date>
+  <millis>1476789960697</millis>
+  <sequence>29</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Lab4.HeavyComputing</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>CmdExecThread::run start</message>
+</record>
+<record>
+  <date>2016-10-18T11:26:00</date>
+  <millis>1476789960698</millis>
+  <sequence>30</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Lab4.HeavyComputing</class>
+  <method>Read</method>
+  <thread>1</thread>
+  <message>HeavyComputation::Read start</message>
+</record>
+<record>
+  <date>2016-10-18T11:26:22</date>
+  <millis>1476789982138</millis>
+  <sequence>31</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Lab4.HeavyComputing</class>
+  <method>Read</method>
+  <thread>1</thread>
+  <message>HC::Read end</message>
+</record>
+<record>
+  <date>2016-10-18T11:26:22</date>
+  <millis>1476789982138</millis>
+  <sequence>32</sequence>
+  <logger>log_file</logger>
+  <level>FINE</level>
+  <class>Lab4.HeavyComputing</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>CmdExecThread::run end</message>
 </record>
 </log>
