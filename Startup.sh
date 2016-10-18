@@ -1,5 +1,5 @@
-#!/bin/s
-javac Part4/HeavyComputing.java
-javac Part4/Server.java
-java Part4/Server
+#!/bin/bash
+javac Lab4/HeavyComputing.java
+javac Lab4/Server.java
+java Lab4/Server
 
