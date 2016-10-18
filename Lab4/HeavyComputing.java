@@ -8,7 +8,6 @@ import java.net.Socket;
 import java.net.SocketException;
 import java.util.logging.Logger;
 
-import Part3.CmdExecuter;
 
 public class HeavyComputing implements Runnable  {
 	
