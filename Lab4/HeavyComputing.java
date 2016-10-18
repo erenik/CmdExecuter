@@ -53,10 +53,21 @@ public class HeavyComputing implements Runnable  {
 	public void run() {
 		
 		// check the number of prime numbers below 1000
-		int nb = primeNumber(1000);
-		
-		
-		
+	//	int nb = primeNumber(100000);
+	for (int i =0;i<1000;++i){
+		fibonacci(i);
+}
+System.out.println("done");		
+try {
+Thread.sleep(5);	
+} catch (Exception e) {
+System.out.println("error sleeping");
+}
+
+
+
+
 	}
+
 
 }
